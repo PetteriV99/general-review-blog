@@ -1,2 +1,7 @@
+config.py vaihda salasana ja tunnus oman tietokannan mukaiseksi <br>
+poista kaikki taulukot tietokannassa <br>
+flask db init <br>
+flask db migrate <br>
+flask db upgrade <br>
 run app.py <br>
-master --> chapter 5
+master --> chapter 7
