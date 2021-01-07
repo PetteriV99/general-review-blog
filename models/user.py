@@ -9,10 +9,12 @@ class User(db.Model):
     email = db.Column(db.String(200), nullable=False, unique=True)
     password = db.Column(db.String(200))
     is_active = db.Column(db.Boolean(), default=False)
+    avatar_image = db.Column(db.String(100), default=None)
+
     created_at = db.Column(db.DateTime(), nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime(), nullable=False, server_default=db.func.now(), onupdate=db.func.now())
 
-    recipes = db.relationship('Recipe', backref='user')
+    reviews = db.relationship('Review', backref='user')
 
     @classmethod
     def get_by_username(cls, username):

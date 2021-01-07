@@ -5,9 +5,9 @@ bin/
 include/
 pip-selfcheck.json
 
-# Django related 
+# Django related
 mysite/mysite/settings.py
-static-cdn/  # any collected static files 
+static-cdn/  # any collected static files
 Scripts
 
 # Byte-compiled / optimized / DLL files
@@ -26,7 +26,9 @@ dist/
 downloads/
 eggs/
 .eggs/
+.idea/
 lib/
+migrations/
 lib64/
 parts/
 sdist/
