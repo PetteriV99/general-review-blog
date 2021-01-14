@@ -1,6 +1,6 @@
 # Geneal Review Blog <br>
 General review blog is a web application that offers its users the ability to rate and discuss all kinds of things.
-To join, you must first register an user and we will send you a confirmation via email. 
+To join, you must first register an user and confirm your email address. 
 After confirming your account you can start by creating more reviews or commenting on
 reviews made by other people.
 
