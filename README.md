@@ -6,7 +6,8 @@ reviews made by other people.
 
 ### How it was made
 General review blog was made using Flask and Python.
-Programs that were used: PyCharm, VS Code, PgAdmin and Postman.
+Programs that were used include PyCharm, VS Code, PgAdmin and Postman.
+Front-end is still in the works but it is supposed to be made using React.js.
 
 
 ### Developer instructions: <br>
