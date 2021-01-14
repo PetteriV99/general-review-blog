@@ -15,8 +15,9 @@ class ReviewSchema(Schema):
         ordered = True
 
     id = fields.Integer(dump_only=True)
-    title = fields.String(required=True, validate=[validate.Length(max=200)])
-    content = fields.String(validate=[validate.Length(max=1000)])
+
+    title = fields.String(required=True, validate=[validate.Length(max=256)])
+    content = fields.String(validate=[validate.Length(max=1024)])
     rating = fields.Integer(validate=validate_rating)
 
     is_publish = fields.Boolean(dump_only=True)

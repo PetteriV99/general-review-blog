@@ -11,10 +11,14 @@ from webargs.flaskparser import use_kwargs
 from extensions import image_set
 from mailgun import MailgunApi
 from models.review import Review
+from models.comment import Comment
+
 from models.user import User
 
 from schemas.user import UserSchema
 from schemas.review import ReviewSchema
+from schemas.comment import CommentSchema
+
 
 from utils import generate_token, verify_token, save_image
 
@@ -23,6 +27,8 @@ user_schema = UserSchema()
 user_public_schema = UserSchema(exclude=('email', ))
 user_avatar_schema = UserSchema(only=('avatar_url', ))
 review_list_schema = ReviewSchema(many=True)
+comment_list_schema = CommentSchema(many=True)
+
 
 mailgun = MailgunApi(domain=os.environ.get('MAILGUN_DOMAIN'),
                      api_key=os.environ.get('MAILGUN_API_KEY'))
@@ -115,6 +121,29 @@ class UserReviewListResource(Resource):
         reviews = Review.get_all_by_user(user_id=user.id, visibility=visibility)
 
         return review_list_schema.dump(reviews).data, HTTPStatus.OK
+
+
+class UserCommentListResource(Resource):
+
+    @jwt_optional
+    @use_kwargs({'visibility': fields.Str(missing='public')})
+    def get(self, username, visibility):
+
+        user = User.get_by_username(username=username)
+
+        if user is None:
+            return {'message': 'User not found'}, HTTPStatus.NOT_FOUND
+
+        current_user = get_jwt_identity()
+
+        if current_user == user.id and visibility in ['all', 'private']:
+            pass
+        else:
+            visibility = 'public'
+
+        comments = Comment.get_all_by_user(user_id=user.id, visibility=visibility)
+
+        return comment_list_schema.dump(comments).data, HTTPStatus.OK
 
 
 class UserActivateResource(Resource):

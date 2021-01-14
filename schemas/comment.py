@@ -12,9 +12,10 @@ class CommentSchema(Schema):
         ordered = True
 
     id = fields.Integer(dump_only=True)
-    content = fields.String(required=True, validate=[validate.Length(max=1000)])
-    nickname = fields.String(validate=[validate.Length(max=100)])
-    review_id = fields.Integer(required=True)     # review id
+    review_id = fields.Integer(dump_only=True)
+
+    content = fields.String(required=True, validate=[validate.Length(max=512)])
+    review_helpful = fields.Boolean(required=False, dump_only=True)
 
     author = fields.Nested(UserSchema, attribute='user', dump_only=True, exclude=('email', ))
     is_publish = fields.Boolean(dump_only=True)
