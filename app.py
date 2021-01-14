@@ -13,8 +13,6 @@ from resources.token import TokenResource, RefreshResource, RevokeResource, blac
 from resources.review import (ReviewListResource, ReviewResource, ReviewPublishResource,
                               ReviewCommentListResource, ReviewCommentResource, ReviewCommentPublishResource)
 
-#from resources.comment import CommentListResource, CommentResource, CommentPublishResource
-
 
 def create_app():
     app = Flask(__name__)
@@ -63,10 +61,6 @@ def register_resources(app):
     api.add_resource(ReviewCommentListResource, '/reviews/<int:review_id>/comments')
     api.add_resource(ReviewCommentResource, '/reviews/<int:review_id>/comments/<int:comment_id>')
     api.add_resource(ReviewCommentPublishResource, '/reviews/<int:review_id>/comments/<int:comment_id>/publish')
-
-    #api.add_resource(CommentListResource, '/comments')
-    #api.add_resource(CommentResource, '/comments/<int:comment_id>')
-    #api.add_resource(CommentPublishResource, '/comments/<int:comment_id>/publish')
 
 
 if __name__ == '__main__':

@@ -9,6 +9,7 @@ class Review(db.Model):
     title = db.Column(db.String(256), nullable=False)
     content = db.Column(db.String(1024))
     rating = db.Column(db.Integer)
+    comments = db.Column(db.Integer)
 
     is_publish = db.Column(db.Boolean(), default=False)
     created_at = db.Column(db.DateTime(), nullable=False, server_default=db.func.now())

@@ -19,6 +19,7 @@ class ReviewSchema(Schema):
     title = fields.String(required=True, validate=[validate.Length(max=256)])
     content = fields.String(validate=[validate.Length(max=1024)])
     rating = fields.Integer(validate=validate_rating)
+    comments = fields.Integer(dump_only=True)
 
     is_publish = fields.Boolean(dump_only=True)
     author = fields.Nested(UserSchema, attribute='user', dump_only=True, exclude=('email', ))
