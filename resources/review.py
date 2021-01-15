@@ -314,3 +314,4 @@ class ReviewCommentPublishResource(Resource):
         review.save()    # update review with correct comment amount
 
         return {}, HTTPStatus.NO_CONTENT
+

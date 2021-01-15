@@ -2,11 +2,6 @@ from marshmallow import Schema, fields, post_dump, validate, ValidationError
 from schemas.user import UserSchema
 
 
-def validate_num_of_servings(n):    # doesnt check whether review exists (yet)
-    if n == 0:
-        raise ValidationError('Review ID must be greater than 0.')
-
-
 class CommentSchema(Schema):
     class Meta:
         ordered = True
